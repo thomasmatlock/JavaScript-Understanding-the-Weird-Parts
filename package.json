@@ -1,0 +1,22 @@
+{
+  "name": "javascript-understanding-the-weird-parts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasmatlock/JavaScript-Understanding-the-Weird-Parts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomasmatlock/JavaScript-Understanding-the-Weird-Parts/issues"
+  },
+  "homepage": "https://github.com/thomasmatlock/JavaScript-Understanding-the-Weird-Parts#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
