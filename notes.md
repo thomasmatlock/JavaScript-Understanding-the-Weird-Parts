@@ -1,4 +1,4 @@
-This is notes
+Notes
 
 -Section 1
 
@@ -9,7 +9,7 @@ This is notes
 
     - Conceptual asides include
         - syntax parsers
-            - definition: a program that reads your code and determines what it does and if its grammar is valid. your code isnt magic, someone else wrote a program to translate it for the computer
+            - definition: a program that reads your code and determines what it does and if its grammar is valid. your code isn't magic, someone else wrote a program to translate it for the computer
             - the translator programs that translate your JS, Python, etc, to computer code are called compilers
         - lexical environments
             - definition: WHERE something sits physically in the code you write
@@ -28,9 +28,35 @@ This is notes
             - type 'this' into browser dev console to access it
             - the this object is the entire global object, a wrapper for your code
             - 'this' is the browser window, its even called 'window'
-            - a global object means its availebl to all code running inside that context
+            - a global object means its available to all code running inside that context
             - 'this' refers to the window object, the global parent object
             - global also means its not inside any function = if not in a function, its global
+            - everything global, gets attached to the global object
+            - browser JS, the global object is the 'window' object, whereas in Node, its just the module itself
+            - also, the "outer environment' comes into play all the time, but is null at the global level
+    - 10, The Execution Context, Creation and Hoisting
+        - you can call function before declarations
+        - you cannot use variables before declaration
+        - if you try using a variable before declaration, it will appear as undefined
+            - however try using a variable thats never declared, it will cause an error.
+                - note, this course must be old, because both cause uncaughtReference errors, so we'll roll with it for now
+        - Execution Context is created in 2 phases
+            - CREATION PHASE, setup the memory space (complete functions, and undefined variables)
+                - creates Global object/this, and outer environment
+                - sets aside memory space for variables and functions === "HOISTING"
+                    - HOISTING is not moving variables and functions to the top of the module to make them available, but instead
+                    - hoisting is: before your code begins to be executed, line by line, the JS engine has already set aside memory space for them. so they already exist.
+                    - when the code executes line by line, it can access them
+                    - functions are placed in their entirety into memory
+                    - however, with variables, its a little different
+            - EXECUTION PHASE
+                - this is where assignemtns/declarations are set, ie, const a = 'hello world';
+                - in the creation phase, the JS engine sets up memory space for variables and functions, but doesnt know what the variabele contains until execution (line by line phase) where a value is assigned to the variable
+                - until execution, JS engine assigns a placeholder, called 'undefined'
+                - it would also be undefined if we just did: const a; inititalized but never declared
+                - all variables in JS are initially set to undefined
+                - its bad to rely on hoisting in any way, its better to always call functions and use varilables after declaration
+                -
 
 -Section 3
 -Section 4
