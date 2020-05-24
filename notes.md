@@ -17,7 +17,7 @@ Notes
             - ie a variable sits lexically/physically inside a function scope
         - execution context
             - a wrapper to help manage the code that is running
-            - there are lots of lexical environments. which one is currently running is managed via execution contexts. It can and usually does contain things beyond what youve written in your code
+            - there are lots of lexical environments. which one is currently running is managed via execution contexts. It can and usually does contain things beyond what you've written in your code
     - these are fundamental concepts to understanding JS under the hood
     - 7, name value pairs
         - names may be defined more than once, but only can have 1 value in any given context
