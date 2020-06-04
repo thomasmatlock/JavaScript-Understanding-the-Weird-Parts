@@ -49,14 +49,65 @@ Notes
                     - when the code executes line by line, it can access them
                     - functions are placed in their entirety into memory
                     - however, with variables, its a little different
-            - EXECUTION PHASE
-                - this is where assignemtns/declarations are set, ie, const a = 'hello world';
-                - in the creation phase, the JS engine sets up memory space for variables and functions, but doesnt know what the variabele contains until execution (line by line phase) where a value is assigned to the variable
+                    - Execution Context is created (CREATION PHASE)
+                       - created:
+                        - global object
+                        - 'this'
+                         - Outer Environment
+                    "Hoisting" === Variables Setup (set to 'undefined') and Functions setup
+                        - undefined is a defined value, not the same as "not been defined"
+                        - any undeclared variables during hoisting are going to be uncaught references
+                        - "Undefined" === means I never set the value
+                        - variables all receive a value of undefined during the creation phase of the execution context, which happens before the execution context moves into execution phase
+            - EXECUTION PHASE, phase 2, running your code line by line
+                - this is where assignments/declarations are set, ie, const a = 'hello world';
+                - in the creation phase, the JS engine sets up memory space for variables and functions, but doesn't know what the variable contains until execution (line by line phase) where a value is assigned to the variable
                 - until execution, JS engine assigns a placeholder, called 'undefined'
-                - it would also be undefined if we just did: const a; inititalized but never declared
+                - it would also be undefined if we just did: const a; initialized but never declared
                 - all variables in JS are initially set to undefined
-                - its bad to rely on hoisting in any way, its better to always call functions and use varilables after declaration
-                -
+                - its bad to rely on hoisting in any way, its better to always call functions and use variables after declaration
+    2.13 Conceptual Aside, single threaded synchronous execution
+        - single threaded - one command at a time being executed. simple
+        - synchronous = one line at a time, in order. simple
+    2.14, function invocation and the execution stack
+        - Invocation = running a function. Simple. In JS, this means using parens ()
+        - put the name of the function, then parens (). you invoked the function
+        - quick explainer:
+            - function a()
+            - function b() {
+                a()
+            }
+            b()
+            - heres what happens. global execution context starts, with creation phase, sets aside memory for the functions
+            - when b() or a function is called, it creates a new execution context, (create and execute
+            - here, it would create a new execution context for b(), then inside B when it hits the invoke a() it will create another execution context for that, adding it to the stack.
+            - then as each execution context completes, its withdraws from it, and removes it from the execution stack.
+            - you could also have 2 functions, a/b, call a below everything, and even though b is elsewhere in the code, it doesnt matter, it's already in the global execution context and ready to run
+            - basically every time you invoke any function, its added to the execution stack, and only once it completes, it's "popped" off the stack and continues either to the next line of whatever parent context it started in, whether its the global, or another function that invoked, then that function resumes
+    2.15, functions, context, and variable environments (big word alert)
+        - variable environment === where the variable lives (global, local inside a function, etc)
+        - variable environment === basically just scope, global or local to whatever execution context it resides in
+    2.16, the scope chain
+        - variables inside functions that are not declared inside functions, will look to their outer environment for that variable. simple.
+        - also variables declared within its own execution context/scope, will not persist to their outside environment unless that function returns it to the outer environment
+        - also it doesnt limit itself to its nearest parent outer environment, it will keep moving up all the way to the global environment to discover the variable. this is the scope chain, looking through greater and greater scopes for a variable value if its defined within its own execution context
+        - really easy way to figure out the scope chain:
+            - just look at it lexically, what code sits inside of what. pretty easy
+    2.17, scope, es6, and let
+        - scope === where a variable is available in your code, and also, whether its truly the same variable, or a new copy
+        - lots of people learn by example-based  learning, project based. But also learning whats under the hood, whats really going on, makes you a better coder.
+    2.18, async callback
+        - async === means more than one at a time. simple.
+        - JS doesnt run asynchronously, it runs sync stuff, but due to event loop/thread pool, it can have stuff run in the background
+        - while you have execution contexts bubbling up, from global to the next, etc, you also have:
+        - the event queue, which is like the ticker/timer moving everything along
+        - the event queue is like a secondary execution context stack. This
+        - the event queue gets looked at, when the execution stack empties
+        - this means that clicks, http events, etc get handled, if nothing else is going on
+        - JS looks at event queue, and if events have a function tied to them, like click to run a function, it will handle that function on execution stack, and pop the event off the event queue
+        - JS wont handle any further event queue events, until the execution stack is empty again, which it does by running whatever function it does, line by line
+        - in this way, it seems async, but technically its just shuttling synchronously between execution stack and event queue
+        - even if you click while, for example, a function is running, JS will add that event to the event queue, but until the function is done and off the execution stack, it wont add it to the execution stack from the event queue, until execution stack is empty
 
 -Section 3
 -Section 4
