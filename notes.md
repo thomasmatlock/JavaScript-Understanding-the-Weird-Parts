@@ -143,6 +143,23 @@
         - Number(null) = returns 0. similar to false coercing to 0, so does null
         - one thing to remember with comparison operators is that they coerce , but you need to use === to prevent any confusion, its strict comparison. a simple double ==  tries to coerce if possible, which causes problems. use === when possible
         - use triple === strict comparison 99% of the time
+    3.27, existence and booleans
+        - anything you use Boolean(undefined/null/"") to convert to a boolean converts to false, anything that assumes lack of existence will convert to false
+        - also anything you put in an if statement, it will try to coerce to a boolean, if true, else false
+        - this is useful in using coercion to our advantage to check if something has a value, because it fails if it contains null/undefined/"". The only caveat to this is if something might have 0 as a value. If theres any chance its zero, dont do this. Otherwise use if statements freely to check if something has a value
+        - one way to get around that is: if (a || a === 0) strict comparison will run first and if its indeed 0, it becomes true. aka (false || true) which evals to true
+    3.28, default values
+        - so if you run a function that accepts an argument, but pass nothing to it as an argument, JS doesnt care, it simply gives it the value of undefined
+        - however if you concatenate a console log combining a string and the argument, it will coerce the argument into a string with value of undefined
+        - however, if you want a default value for a parameter, you can:
+            name = name || '<your name here>' // this checks for a name value, if none passed, it evals to false, but the 2nd half of that statement will eval to true and use the '<your name here>' string
+        - this is because an OR statement returns true if either side can be coerced to true
+    3.29, framework aside, default values
+        - say your import multiple js scripts into your html file, it pulls them all into, chunks them together, and they are run as if they are 1 file
+        - caveat to this, if any vars or functions share the same name, the first imported ones will be overwritten with the values of the 2nd ones
+        - one way to avoid this:
+            - window.variableName = window.variableName || "variableName2"
+            - this is way it checks if value exists, if yes, it gives it the default name on the 2nd half of the OR statement
 
 -Section 4
 -Section 5
