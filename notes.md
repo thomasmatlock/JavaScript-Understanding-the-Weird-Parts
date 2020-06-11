@@ -134,6 +134,15 @@
         - the pdf for this lesson contains the priority ranking from highest to lowest
         - one thing to remember is associativity, which means left to right or right to left. Its a column on that pdf. for vars its usually right to left, but parens, its left to right, for example. Using the equals sign is an assignment operator, which has associativity of right to left
         - REMEMBER, check precedence! (for which operators runs first), and if they are same priority, then check associativity (left to right, or right to left)
+    3.24, conceptual aside, coercion
+        - coercion === converting one value type to another, simple. happens often in JS because its dynamic (not static where var types are declared, in JS dynamic, var types can and do change often)
+        - if you write: var a = 1 + '2'; it will coerce the number to a string, it returns a 12, as a string. It tries to figure out what the number would be if it were a string
+    3.25, comparison operators
+        - console.log(3 < 2 < 1) is equal to true. Why? comparison operators move left to right, so the left 'less than' op runs, which is  3< 2 = false. Now it becomes (false < 1). False is coerced to 0
+        - Number(undefined) = error, returns NaN.
+        - Number(null) = returns 0. similar to false coercing to 0, so does null
+        - one thing to remember with comparison operators is that they coerce , but you need to use === to prevent any confusion, its strict comparison. a simple double ==  tries to coerce if possible, which causes problems. use === when possible
+        - use triple === strict comparison 99% of the time
 
 -Section 4
 -Section 5
