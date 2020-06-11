@@ -1,4 +1,4 @@
-Notes
+# Notes
 
 -Section 1
 
@@ -82,7 +82,7 @@ Notes
             - when b() or a function is called, it creates a new execution context, (create and execute
             - here, it would create a new execution context for b(), then inside B when it hits the invoke a() it will create another execution context for that, adding it to the stack.
             - then as each execution context completes, its withdraws from it, and removes it from the execution stack.
-            - you could also have 2 functions, a/b, call a below everything, and even though b is elsewhere in the code, it doesnt matter, it's already in the global execution context and ready to run
+            - you could also have 2 functions, a/b, call a below everything, and even though b is elsewhere in the code, it doesn't matter, it's already in the global execution context and ready to run
             - basically every time you invoke any function, its added to the execution stack, and only once it completes, it's "popped" off the stack and continues either to the next line of whatever parent context it started in, whether its the global, or another function that invoked, then that function resumes
     2.15, functions, context, and variable environments (big word alert)
         - variable environment === where the variable lives (global, local inside a function, etc)
@@ -90,7 +90,7 @@ Notes
     2.16, the scope chain
         - variables inside functions that are not declared inside functions, will look to their outer environment for that variable. simple.
         - also variables declared within its own execution context/scope, will not persist to their outside environment unless that function returns it to the outer environment
-        - also it doesnt limit itself to its nearest parent outer environment, it will keep moving up all the way to the global environment to discover the variable. this is the scope chain, looking through greater and greater scopes for a variable value if its defined within its own execution context
+        - also it doesn't limit itself to its nearest parent outer environment, it will keep moving up all the way to the global environment to discover the variable. this is the scope chain, looking through greater and greater scopes for a variable value if its defined within its own execution context
         - really easy way to figure out the scope chain:
             - just look at it lexically, what code sits inside of what. pretty easy
     2.17, scope, es6, and let
@@ -98,7 +98,7 @@ Notes
         - lots of people learn by example-based  learning, project based. But also learning whats under the hood, whats really going on, makes you a better coder.
     2.18, async callback
         - async === means more than one at a time. simple.
-        - JS doesnt run asynchronously, it runs sync stuff, but due to event loop/thread pool, it can have stuff run in the background
+        - JS doesn't run asynchronously, it runs sync stuff, but due to event loop/thread pool, it can have stuff run in the background
         - while you have execution contexts bubbling up, from global to the next, etc, you also have:
         - the event queue, which is like the ticker/timer moving everything along
         - the event queue is like a secondary execution context stack. This
@@ -110,6 +110,31 @@ Notes
         - even if you click while, for example, a function is running, JS will add that event to the event queue, but until the function is done and off the execution stack, it wont add it to the execution stack from the event queue, until execution stack is empty
 
 -Section 3
+
+    - 3.19, conceptual aside, types and javascript
+        - dynamic typing, you dont tell the engine what type of data a variable holds, it figures it out while youre program is running
+        - vars can hold different types of values because its all figured out during execution
+        - in other languages, they use something called static typing, which requires you to tell the engine ahead of time what var type something is, ie: bool isNew = 'hello' (error because bools arent strings)
+        - JS, on the other hand, you can swap data types on the fly, ie you save a string value and overwrite it with a integer value, then again with a boolean value
+    - 3.20, primitive types (6 types)
+        - primitive type === a type of data that represents a certain value, thats not an object, which is a collection of name/value pairs. primitives are just single values
+        - 6 types:
+            - undefined == lack of existence. JS sets this to variables initiallly in the creation phase, only re-assigns them during execution phase with their intended values. never set vars to undefined
+            - null === lack of existence. you can set vars to null, if you want to set something to "not exist"
+            - booleans === true or false.
+            - number === floating point number. In JS, numbers ALWAYS have decimals attached to them
+            - string === sequence of characters, numbers, symbosl
+            - symbol, used in ES6.
+    3.21, conceptual aside, operators
+        - operators === special function that is syntactically (written) differently
+        - generally, operators take 2 params and return one result
+    3.22, operator precedence and associativity
+        - operator precedence === simple, means which operator function gets called first (HIGHER precedence wins)
+        - associativity === what order operator functions get called in: left to right, or right to left (when functions have the same precedence)
+        - the pdf for this lesson contains the priority ranking from highest to lowest
+        - one thing to remember is associativity, which means left to right or right to left. Its a column on that pdf. for vars its usually right to left, but parens, its left to right, for example. Using the equals sign is an assignment operator, which has associativity of right to left
+        - REMEMBER, check precedence! (for which operators runs first), and if they are same priority, then check associativity (left to right, or right to left)
+
 -Section 4
 -Section 5
 -Section 6
