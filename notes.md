@@ -162,6 +162,27 @@
             - this is way it checks if value exists, if yes, it gives it the default name on the 2nd half of the OR statement
 
 -Section 4
+
+    4.30, objects and the dot
+        - objects and functions are very related in JS
+        - in many ways the same subject
+        - objects, as always are name value pairs
+        - objects contain values, including:
+            - properties
+                -  properties include primitives , strings, numbers, booleans etc
+                - properties also contain objects as properties, which then contain more primitives or more objects, whatever
+            - methods (functions)
+                - functions that sit on an object are called methods, whereas functions are freefloatering, unattached to objects
+            - the important thing to rember is that an object sits in memory, and also stored is that objects references to other things in memory, like its properties or methods
+            - basically sampleObject["sampleProperty"] === samepleObject.sampleProperty
+    4.31, objects and object literals
+    4.32, framework aside
+        - namespace === container for variables and functions, typically to keep variables and functions with the same name separate
+    4.33, JSON = JavaScript Object Notation (review last 3 mins of this)
+        - HTTP used to use XML format to send/receive data. XML looks like HTML, with values enclosed in tags, ie: <firstName>Mary</firstName>
+        - XML has lots of redundant characters, ie closing tags bump packet size by 50-100%, so JSON was created
+        - JSON is like a subset of JS object literal syntax. Anything that is JSON is also valid JS, but not all JS object syntax is valid JSON.
+
 -Section 5
 -Section 6
 -Section 7
