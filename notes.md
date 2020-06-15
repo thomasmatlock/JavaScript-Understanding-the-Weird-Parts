@@ -182,6 +182,23 @@
         - HTTP used to use XML format to send/receive data. XML looks like HTML, with values enclosed in tags, ie: <firstName>Mary</firstName>
         - XML has lots of redundant characters, ie closing tags bump packet size by 50-100%, so JSON was created
         - JSON is like a subset of JS object literal syntax. Anything that is JSON is also valid JS, but not all JS object syntax is valid JSON.
+    4.34, functions are objects
+        - functions are objects?
+        - first class functions === everything you can do with other types, you can do with functions
+            - you can: assign them to variables (const functionName = ), pass them around, create them on the fly
+            - everything you can do with other types, like objects, strings, numbers, bools, etc, YOU CAN ALSO DO WITH FUNCTIONS
+            - you can pass functions as params to other functions
+            - functions are actually a special kind of object
+            - you can attach methods and properties to a function, why, because its an object
+            - you can attach primitives, objects, even other functions as methods to functions
+            - 2 special things about functions:
+                - it doesnt have to have a name. naming functions is optional, can be anonymous, meaning no name
+                - functions are objects, and the code you set inside them is just properties being added on to it
+                - whats special about it, is its invocable, aka runnable.
+                - functions are objects, and code happens to be one of the properties of that object
+                - functions are objects that have name properties, and 'code' properties, which is the code you set inside them
+                - the code property is the invocable property, ie greet() will invoke the code property/the body of code set inside the function
+    4.35, function statements and function expressions
 
 -Section 5
 -Section 6
