@@ -199,6 +199,26 @@
                 - functions are objects that have name properties, and 'code' properties, which is the code you set inside them
                 - the code property is the invocable property, ie greet() will invoke the code property/the body of code set inside the function
     4.35, function statements and function expressions
+        - expression ===  unit of code that results in a value. it doesnt have to save to a variable. example:
+            - anything that contains an operator, is an expression. even "a = 3" is an expression.  why because it takes a unit of code, and runs it to set a value in memory.
+            - expressions have to EVALUATE to something, meaning they run, and return a value
+            - the line, or unit, of code, results in a value. it can be a true, a string, bool, whatever
+            - statements dont evaluate, aka result in a variable. an if statement for example doesnt return a value.
+                - an if statement contain an expression inside the parens, but the if statement doesnt evalute to any new value
+            - Expressions result in values, statements just do work that dont result in values
+        - function statements vs functions expressions:
+            - function greet() { console.log("Hello") } === is a statement. when its run, thats it, doesnt result in a value
+            - const anonymousGreet = function() { console.log("Hello")} is in fact, a function expression. because function is an object, you are simply saving a object to a variable we are calling anonymousGreet
+            - the first one, the statement doesnt evalute to anything. It is hoisted into memory at creation phase, and does nothing before and after it runs. whereas function expression evaluates to a value, aka anonymousGreet. its an object that
+            - the statement has 2 things: name, and the (invocable) code block set inside it. (functions are special objects)
+            - the expression has an equals operator. it doesnt have a name, (anonymous function just means no name function)
+            - another difference: statement doesnt do anything, JS engine just says oh ok, but the expression evaluates to the object/function that is saved to
+            - function expressions are not hoisted, but this makes sense because expressions save to a value, and variables are not hoisted either. So you invoke a function expression before its declared, it doesnt run
+            - JS only hoists the variable, not the value saved to it, fair enough
+            - remember anything with an operator is an expression, and these are not hoisted/made available in the creation phase, but only once ran in the execution phase
+            - recap: a function is an object. a function expression creates an object
+            -  first class functions, passed around and created on the fly
+            - just being able to pass functions around is called functional programming
 
 -Section 5
 -Section 6
