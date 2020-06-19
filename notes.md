@@ -219,6 +219,22 @@
             - recap: a function is an object. a function expression creates an object
             -  first class functions, passed around and created on the fly
             - just being able to pass functions around is called functional programming
+    4.36, conceptual aside, "by value" vs "by reference"
+        - "by value" (applies to primitives)
+            - so 'a' a primitive value is set in memory. the engine knows its "address" in memory
+            - if you pass 'a' to some function, or save its value to a new variable, with primitives, the new variable creates a copy of it. the duplicate copies the value and sets aside a new 'address' in memory, a brand new location, completely independant of the original.
+            - theoretically, if you copied a primitive infinite times, you would run out of memory. there is finite memory space for endless new values.
+            - this entire approach is called "by value". its setting 1 value to another, Xeroxing it into a new, addressable value.
+            - If a = 3, b = a, then when you change b = 4, a still remains a value of 3
+        - "by reference" (applies to objects, not primitives. this includes functions, as they are also objects)
+            - when you set a variable to a value of an object, that variable knows where the object lives in memory, and "references" it.
+            - now, when you set a new variable to be the same variable referencing the object, it does NOT copy the object in memory, it simply also gets the same address to the object in memory. this applies for whether you're setting a variable to something set already set to an object, or passing the same object to a function.
+            - for objects, no new object is ever created, regardless of how many times its passed or set to a variable, they all reference the original object
+            - analogy: youre the object, but you might have aliases. However many aliases you have, you still "live" in the same place, in memory basically.
+            - so passing it to a function, anything you do to mutate it within the function, persists outside the function.
+            - thats right, with variables you return them, but mutate objects within a function, and the changes persist
+            - btw, the equals operator is kind of an exception, it signals the memory to set aside a new spot in memory, because its reserving space for whatever value you are assigning
+    4.37, objects, functions, and 'this'
 
 -Section 5
 -Section 6
